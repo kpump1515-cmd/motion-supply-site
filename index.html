@@ -206,6 +206,7 @@ body{padding-bottom:78px}
     </div>
     <div class="nav-links">
       <a href="#drop">Drop</a>
+      <a href="#updates">Drop Alerts</a>
       <div class="ms-dd">
         <a href="shop.html">Shop</a>
         <div class="ms-dd-menu">
@@ -301,6 +302,32 @@ body{padding-bottom:78px}
     </div>
   </section>
 
+  
+  <section id="updates" class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="kicker">STAY IN THE LOOP</div>
+        <h2>Get <em>Drop Alerts</em></h2>
+        <div class="price-note">New drops, restocks &amp; promo codes — straight to your inbox</div>
+      </div>
+      <div class="order-box" style="max-width:560px;margin:0 auto">
+        <form class="order-form" action="https://formspree.io/f/mzebwedd" method="POST" onsubmit="return msSignup(event)">
+          <label class="field-label" for="su-name">Name</label>
+          <input class="field" type="text" id="su-name" name="Name" placeholder="Your name" required>
+          <label class="field-label" for="su-email">Email</label>
+          <input class="field" type="email" id="su-email" name="email" placeholder="you@email.com" required>
+          <label class="field-label" for="su-phone">Phone (optional, for text alerts)</label>
+          <input class="field" type="tel" id="su-phone" name="Phone" placeholder="(555) 555-5555">
+          <button class="btn btn-primary" type="submit" style="width:100%;margin-top:18px">Sign Me Up</button>
+        </form>
+        <div class="order-note" id="su-thanks" style="display:none">
+          <p class="ot-msg" style="font-size:18px">You're on the list.</p>
+          <p style="margin-top:10px">You'll hear from Motion Supply first on every new drop and promo.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <footer>
     <div class="logo">MOTION <span>SUPPLY</span></div>
     <div class="tag">LESS EMOTION · MORE MOTION</div>
@@ -323,6 +350,32 @@ body{padding-bottom:78px}
   </footer>
 
 
-<div class="ms-tabs"><a href="shop.html">Shop</a><a href="#gallery">Gallery</a><a href="#preorder">Pre-Order</a></div>
+<div class="ms-tabs"><a href="shop.html">Shop</a><a href="#gallery">Gallery</a><a href="#preorder">Pre-Order</a><a href="#updates">Alerts</a></div>
+<script>
+async function msSignup(e){
+  e.preventDefault();
+  var f=e.target;
+  var btn=f.querySelector('button[type="submit"]');
+  var orig=btn.textContent;
+  btn.disabled=true; btn.textContent='Signing up...';
+  var data=new FormData(f);
+  data.append('Item','MAILING LIST SIGNUP');
+  data.append('_subject','New Motion Supply subscriber - '+f.elements['Name'].value);
+  try{
+    var r=await fetch('https://formspree.io/f/mzebwedd',{method:'POST',body:data,headers:{'Accept':'application/json'}});
+    if(r.ok){
+      f.style.display='none';
+      document.getElementById('su-thanks').style.display='block';
+    }else{
+      btn.disabled=false; btn.textContent=orig;
+      alert('Sorry, something went wrong. Please try again or DM us on Instagram.');
+    }
+  }catch(err){
+    btn.disabled=false; btn.textContent=orig;
+    alert('Network error. Please try again or DM us on Instagram.');
+  }
+  return false;
+}
+</script>
 </body>
 </html>
