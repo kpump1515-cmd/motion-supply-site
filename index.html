@@ -311,14 +311,19 @@ body{padding-bottom:78px}
         <div class="price-note">New drops, restocks &amp; promo codes — straight to your inbox</div>
       </div>
       <div class="order-box" style="max-width:560px;margin:0 auto">
-        <form class="order-form" action="https://formspree.io/f/mzebwedd" method="POST" onsubmit="return msSignup(event)">
-          <label class="field-label" for="su-name">Name</label>
-          <input class="field" type="text" id="su-name" name="Name" placeholder="Your name" required>
-          <label class="field-label" for="su-email">Email</label>
-          <input class="field" type="email" id="su-email" name="email" placeholder="you@email.com" required>
-          <label class="field-label" for="su-phone">Phone (optional, for text alerts)</label>
-          <input class="field" type="tel" id="su-phone" name="Phone" placeholder="(555) 555-5555">
-          <button class="btn btn-primary" type="submit" style="width:100%;margin-top:18px">Sign Me Up</button>
+        <form class="order-form" id="ms-signup"
+              action="https://app.us7.list-manage.com/subscribe/post?u=973e815f0cf903021a2f03582&amp;id=2e58f7e746&amp;f_id=006bc2e1f0"
+              method="post" target="_blank" novalidate onsubmit="msSignupDone()">
+          <label class="field-label" for="mce-FNAME">First Name</label>
+          <input class="field" type="text" id="mce-FNAME" name="FNAME" placeholder="Your name">
+          <label class="field-label" for="mce-EMAIL">Email</label>
+          <input class="field" type="email" id="mce-EMAIL" name="EMAIL" placeholder="you@email.com" required>
+          <label class="field-label" for="mce-PHONE">Phone (optional)</label>
+          <input class="field" type="text" id="mce-PHONE" name="PHONE" placeholder="(555) 555-5555">
+          <div aria-hidden="true" style="position:absolute;left:-5000px">
+            <input type="text" name="b_973e815f0cf903021a2f03582_2e58f7e746" tabindex="-1" value="">
+          </div>
+          <button class="btn btn-primary" type="submit" name="subscribe" style="width:100%;margin-top:18px">Sign Me Up</button>
         </form>
         <div class="order-note" id="su-thanks" style="display:none">
           <p class="ot-msg" style="font-size:18px">You're on the list.</p>
@@ -352,29 +357,14 @@ body{padding-bottom:78px}
 
 <div class="ms-tabs"><a href="shop.html">Shop</a><a href="#gallery">Gallery</a><a href="#preorder">Pre-Order</a><a href="#updates">Alerts</a></div>
 <script>
-async function msSignup(e){
-  e.preventDefault();
-  var f=e.target;
-  var btn=f.querySelector('button[type="submit"]');
-  var orig=btn.textContent;
-  btn.disabled=true; btn.textContent='Signing up...';
-  var data=new FormData(f);
-  data.append('Item','MAILING LIST SIGNUP');
-  data.append('_subject','New Motion Supply subscriber - '+f.elements['Name'].value);
-  try{
-    var r=await fetch('https://formspree.io/f/mzebwedd',{method:'POST',body:data,headers:{'Accept':'application/json'}});
-    if(r.ok){
-      f.style.display='none';
-      document.getElementById('su-thanks').style.display='block';
-    }else{
-      btn.disabled=false; btn.textContent=orig;
-      alert('Sorry, something went wrong. Please try again or DM us on Instagram.');
-    }
-  }catch(err){
-    btn.disabled=false; btn.textContent=orig;
-    alert('Network error. Please try again or DM us on Instagram.');
-  }
-  return false;
+function msSignupDone(){
+  setTimeout(function(){
+    var f=document.getElementById('ms-signup');
+    var t=document.getElementById('su-thanks');
+    if(f){f.style.display='none';}
+    if(t){t.style.display='block';}
+  },400);
+  return true;
 }
 </script>
 </body>
