@@ -201,6 +201,10 @@ body{padding-bottom:78px}
 .card-img--wide img{object-fit:contain;transform:none \!important;padding:6px}
 .card:hover .card-img--wide img{transform:none \!important}
 </style>
+<style>
+#order{display:none}
+#order:target{display:block}
+</style>
 </head>
 <body>
 
@@ -239,7 +243,7 @@ body{padding-bottom:78px}
           <div class="card-body">
             <span class="card-tag">Black tee</span>
             <h3>Skeleton Tee — Front &amp; Back</h3>
-            <div class="card-foot"><span class="price">$45</span><a href="#order" class="btn-mini" onclick="return msPick('Skeleton Tee (Black) - $45')">Order This</a></div>
+            <div class="card-foot"><span class="price">$45</span><a href="#order" class="btn-mini" onclick="msPick('Skeleton Tee (Black) - $45')">Order This</a></div>
           </div>
         </article>
         <article class="card" id="halftone-tee">
@@ -247,7 +251,7 @@ body{padding-bottom:78px}
           <div class="card-body">
             <span class="card-tag">Black tee</span>
             <h3>Halftone Tee — Front</h3>
-            <div class="card-foot"><span class="price">$28.99</span><a href="#order" class="btn-mini" onclick="return msPick('Halftone Tee (Black) - $28.99')">Order This</a></div>
+            <div class="card-foot"><span class="price">$28.99</span><a href="#order" class="btn-mini" onclick="msPick('Halftone Tee (Black) - $28.99')">Order This</a></div>
           </div>
         </article>
       </div>
@@ -305,7 +309,6 @@ body{padding-bottom:78px}
     </div>
   
   </section>
-  <script>(function(){var s=document.getElementById('order');if(s){s.style.display='none';}})();</script>
 
 
   <footer>
@@ -343,12 +346,12 @@ function msSync(){
 function msPick(value){
   var s=document.getElementById('order');
   if(s){s.style.display='block';}
+  window.location.hash='order';
   var sel=document.getElementById('of-pick');
   if(sel){sel.value=value; msSync();}
   var f=s?s.querySelector('.order-form'):null, t=document.getElementById('of-thanks');
   if(f){f.style.display='';} if(t){t.style.display='none';}
   if(s){setTimeout(function(){s.scrollIntoView({behavior:'smooth',block:'start'});},80);}
-  return false;
 }
 async function msOrder(e){
   e.preventDefault();
