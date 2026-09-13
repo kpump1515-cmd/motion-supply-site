@@ -288,14 +288,14 @@ body{padding-bottom:78px}
           <input class="field" type="tel" id="of-phone" name="Phone" placeholder="(555) 555-5555" required>
           <label class="field-label" for="of-addr">Shipping Address</label>
           <textarea class="field" id="of-addr" name="Address" rows="3" placeholder="Street, City, State, ZIP" required></textarea>
-          <button class="btn btn-primary" type="submit" style="width:100%;margin-top:18px">Send My Order</button>
+          <button class="btn btn-primary" type="submit" style="width:100%;margin-top:18px">Place My Order</button>
         </form>
         <div class="order-note" id="of-thanks" style="display:none">
           <p class="ot-msg" style="font-size:18px">Order received &mdash; we got your details.</p>
           <p style="margin-top:10px">Now pay <b id="of-paid">$45</b> on <a href="https://cash.app/$Tiathompson70" target="_blank" rel="noopener" style="color:var(--pink)">Cash App</a> to lock it in.</p>
           <p style="margin-top:10px;font-size:14px;color:#e9c9dc">Questions? DM <a href="https://instagram.com/motionsupplyclothingco" target="_blank" rel="noopener" style="color:var(--pink)">@motionsupplyclothingco</a> on Instagram. A confirmation was sent to Motion Supply.</p>
         </div>
-        <div style="text-align:center"><div class="cashtag"><a href="https://cash.app/$Tiathompson70" target="_blank" rel="noopener">Cash App</a></div></div>
+        <div style="text-align:center"><a id="of-cash" class="btn btn-primary" href="https://cash.app/$Tiathompson70" target="_blank" rel="noopener" style="margin-top:14px;display:inline-block">Pay on Cash App</a></div>
       </div>
     </div>
   
@@ -362,10 +362,16 @@ async function msOrder(e){
       var nm=f.elements['Name'].value, sz=f.elements['Size'].value, q=f.elements['Quantity'].value;
       var t=document.getElementById('of-thanks');
       var msg=t.querySelector('.ot-msg');
-      if(msg){msg.textContent='Thanks '+nm+'\! Your order is in: '+q+' x '+item.split(' - ')[0]+' ('+sz+').';}
+      var unit=parseFloat((item.split(' - $')[1]||'0'));
+      var total=(unit*parseInt(q||'1',10)).toFixed(2);
+      if(msg){msg.textContent='Thanks '+nm+'\! Your order is in: '+q+' x '+item.split(' - ')[0]+' ('+sz+'). Sending you to Cash App to pay $'+total+'.';}
       f.style.display='none';
       t.style.display='block';
+      var pd=document.getElementById('of-paid'); if(pd){pd.textContent='$'+total;}
+      var link=document.getElementById('of-cash');
+      if(link){link.href='https://cash.app/$Tiathompson70/'+total; link.textContent='Pay $'+total+' on Cash App';}
       t.scrollIntoView({behavior:'smooth',block:'center'});
+      setTimeout(function(){window.location.href='https://cash.app/$Tiathompson70/'+total;},1200);
     }else{
       btn.disabled=false; btn.textContent=orig;
       alert('Sorry, something went wrong. Please try again or DM us on Instagram.');
