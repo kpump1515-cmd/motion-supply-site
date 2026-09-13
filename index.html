@@ -283,39 +283,8 @@ body{padding-bottom:78px}
         </ul>
       </div>
     </div>
-    <div class="wrap">
-      <div class="order-box">
-        <h3 class="order-title">Place Your Order</h3>
-        <p class="order-sub">Skeleton Tee (Black) &mdash; $45 (includes taxes &amp; shipping). Fill this out, then pay on Cash App to lock it in.</p>
-        <form class="order-form" action="https://formspree.io/f/mzebwedd" method="POST" onsubmit="return msOrder(event)">
-          <label class="field-label">Pick Your Size</label>
-          <div class="size-row">
-            <input type="radio" id="sz-s"  name="Size" value="Small" required><label for="sz-s">S</label>
-            <input type="radio" id="sz-m"  name="Size" value="Medium"><label for="sz-m">M</label>
-            <input type="radio" id="sz-l"  name="Size" value="Large"><label for="sz-l">L</label>
-            <input type="radio" id="sz-xl" name="Size" value="Extra Large"><label for="sz-xl">XL</label>
-            <input type="radio" id="sz-2x" name="Size" value="2X"><label for="sz-2x">2X</label>
-            <input type="radio" id="sz-3x" name="Size" value="3X"><label for="sz-3x">3X</label>
-          </div>
-          <label class="field-label" for="of-qty">Quantity</label>
-          <input class="field" type="number" id="of-qty" name="Quantity" min="1" value="1" required>
-          <label class="field-label" for="of-name">Full Name</label>
-          <input class="field" type="text" id="of-name" name="Name" placeholder="Your name" required>
-          <label class="field-label" for="of-email">Email</label>
-          <input class="field" type="email" id="of-email" name="email" placeholder="you@email.com" required>
-          <label class="field-label" for="of-phone">Phone Number</label>
-          <input class="field" type="tel" id="of-phone" name="Phone" placeholder="(555) 555-5555" required>
-          <label class="field-label" for="of-addr">Shipping Address</label>
-          <textarea class="field" id="of-addr" name="Address" rows="3" placeholder="Street, City, State, ZIP" required></textarea>
-          <button class="btn btn-primary" type="submit" style="width:100%;margin-top:18px">Send My Order</button>
-        </form>
-        <div class="order-note" id="of-thanks" style="display:none">
-          <p class="ot-msg" style="font-size:18px">Order received &mdash; we got your details.</p>
-          <p style="margin-top:10px">Now pay <b>$45</b> on <a href="https://cash.app/$Tiathompson70" target="_blank" rel="noopener" style="color:var(--pink)">Cash App</a> to lock it in.</p>
-          <p style="margin-top:10px;font-size:14px;color:#e9c9dc">Questions? DM <a href="https://instagram.com/motionsupplyclothingco" target="_blank" rel="noopener" style="color:var(--pink)">@motionsupplyclothingco</a> on Instagram. A confirmation was sent to Motion Supply.</p>
-        </div>
-        <div style="text-align:center"><div class="cashtag"><a href="https://cash.app/$Tiathompson70" target="_blank" rel="noopener">Cash App</a></div></div>
-      </div>
+    <div class="wrap" style="text-align:center">
+      <a href="shop.html" class="btn btn-primary">Shop &amp; Order</a>
     </div>
   </section>
 
@@ -353,38 +322,7 @@ body{padding-bottom:78px}
     <div class="est">EST 2025</div>
   </footer>
 
-<script>
-async function msOrder(e){
-  e.preventDefault();
-  var f=e.target;
-  if(!f.elements['Size'].value){alert('Please pick a size.');return false;}
-  var btn=f.querySelector('button[type="submit"]');
-  var orig=btn.textContent;
-  btn.disabled=true; btn.textContent='Sending...';
-  var data=new FormData(f);
-  data.append('Item','Skeleton Tee (Black) - $45');
-  data.append('_subject','New Motion Supply Order - '+f.elements['Name'].value);
-  try{
-    var r=await fetch('https://formspree.io/f/mzebwedd',{method:'POST',body:data,headers:{'Accept':'application/json'}});
-    if(r.ok){
-      var nm=f.elements['Name'].value, sz=f.elements['Size'].value, q=f.elements['Quantity'].value;
-      var t=document.getElementById('of-thanks');
-      var msg=t.querySelector('.ot-msg');
-      if(msg){msg.textContent='Thanks '+nm+'! Your order is in: '+q+' x Skeleton Tee ('+sz+').';}
-      f.style.display='none';
-      t.style.display='block';
-      t.scrollIntoView({behavior:'smooth',block:'center'});
-    }else{
-      btn.disabled=false; btn.textContent=orig;
-      alert('Sorry, something went wrong. Please try again or DM us on Instagram.');
-    }
-  }catch(err){
-    btn.disabled=false; btn.textContent=orig;
-    alert('Network error. Please try again or DM us on Instagram.');
-  }
-  return false;
-}
-</script>
+
 <div class="ms-tabs"><a href="shop.html">Shop</a><a href="#gallery">Gallery</a><a href="#preorder">Pre-Order</a></div>
 </body>
 </html>
