@@ -234,7 +234,7 @@ body{padding-bottom:78px}
           <div class="card-body">
             <span class="card-tag">Black tee</span>
             <h3>Skeleton Tee — Front &amp; Back</h3>
-            <div class="card-foot"><span class="price">$45</span><a href="#order" class="btn-mini" onclick="return msPick('Skeleton Tee (Black)','45')">Order This</a></div>
+            <div class="card-foot"><span class="price">$45</span><a href="#order" class="btn-mini" onclick="return msPick('Skeleton Tee (Black) - $45')">Order This</a></div>
           </div>
         </article>
         <article class="card" id="halftone-tee">
@@ -242,7 +242,7 @@ body{padding-bottom:78px}
           <div class="card-body">
             <span class="card-tag">Black tee</span>
             <h3>Halftone Tee — Front</h3>
-            <div class="card-foot"><span class="price">$28.99</span><a href="#order" class="btn-mini" onclick="return msPick('Halftone Tee (Black)','28.99')">Order This</a></div>
+            <div class="card-foot"><span class="price">$28.99</span><a href="#order" class="btn-mini" onclick="return msPick('Halftone Tee (Black) - $28.99')">Order This</a></div>
           </div>
         </article>
       </div>
@@ -251,7 +251,7 @@ body{padding-bottom:78px}
 
   
   
-  <section id="order" class="sec" style="display:none">
+  <section id="order" class="sec">
     <div class="wrap">
       <div class="sec-head">
         <div class="kicker">CHECKOUT</div>
@@ -261,8 +261,14 @@ body{padding-bottom:78px}
     <div class="wrap">
       <div class="order-box">
         <h3 class="order-title">Place Your Order</h3>
-        <p class="order-sub"><b id="of-item">Pick an item above</b> &mdash; <b id="of-price"></b> (includes taxes &amp; shipping). Fill this out, then pay on Cash App to lock it in.</p>
+        <p class="order-sub"><b id="of-item">Pick an item below</b> &mdash; <b id="of-price"></b> (includes taxes &amp; shipping). Fill this out, then pay on Cash App to lock it in.</p>
         <form class="order-form" action="https://formspree.io/f/mzebwedd" method="POST" onsubmit="return msOrder(event)">
+          <label class="field-label" for="of-pick">Choose Your Item</label>
+          <select class="field" id="of-pick" name="Item" required onchange="msSync()">
+            <option value="">— Pick an item —</option>
+            <option value="Skeleton Tee (Black) - $45">Skeleton Tee (Black) — $45</option>
+            <option value="Halftone Tee (Black) - $28.99">Halftone Tee (Black) — $28.99</option>
+          </select>
           <label class="field-label">Pick Your Size</label>
           <div class="size-row">
             <input type="radio" id="sz-s"  name="Size" value="Small" required><label for="sz-s">S</label>
@@ -318,29 +324,32 @@ body{padding-bottom:78px}
 <div class="ms-tabs"><a href="shop.html" class="on">Shop</a><a href="index.html#gallery">Gallery</a><a href="index.html#preorder">Pre-Order</a></div>
 
 <script>
-var MS_ITEM='', MS_PRICE='';
-function msPick(name,price){
-  MS_ITEM=name; MS_PRICE=price;
+function msSync(){
+  var sel=document.getElementById('of-pick');
+  var v=sel.value||'';
+  var name=v?v.split(' - ')[0]:'Pick an item below';
+  var price=v?v.split(' - ')[1]:'';
+  var it=document.getElementById('of-item'); if(it){it.textContent=name;}
+  var pr=document.getElementById('of-price'); if(pr){pr.textContent=price;}
+  var pd=document.getElementById('of-paid'); if(pd&&price){pd.textContent=price;}
+}
+function msPick(value){
+  var sel=document.getElementById('of-pick');
+  if(sel){sel.value=value; msSync();}
   var s=document.getElementById('order');
-  s.style.display='block';
-  document.getElementById('of-item').textContent=name;
-  document.getElementById('of-price').textContent='$'+price;
-  var paid=document.getElementById('of-paid'); if(paid){paid.textContent='$'+price;}
-  var f=s.querySelector('.order-form'), t=document.getElementById('of-thanks');
-  if(f){f.style.display='';} if(t){t.style.display='none';}
-  setTimeout(function(){s.scrollIntoView({behavior:'smooth',block:'start'});},60);
+  if(s){setTimeout(function(){s.scrollIntoView({behavior:'smooth',block:'start'});},60);}
   return false;
 }
 async function msOrder(e){
   e.preventDefault();
   var f=e.target;
-  if(\!MS_ITEM){alert('Please pick an item first.');return false;}
+  var item=f.elements['Item'].value;
+  if(\!item){alert('Please choose an item.');return false;}
   if(\!f.elements['Size'].value){alert('Please pick a size.');return false;}
   var btn=f.querySelector('button[type="submit"]');
   var orig=btn.textContent;
   btn.disabled=true; btn.textContent='Sending...';
   var data=new FormData(f);
-  data.append('Item',MS_ITEM+' - $'+MS_PRICE);
   data.append('_subject','New Motion Supply Order - '+f.elements['Name'].value);
   try{
     var r=await fetch('https://formspree.io/f/mzebwedd',{method:'POST',body:data,headers:{'Accept':'application/json'}});
@@ -348,7 +357,7 @@ async function msOrder(e){
       var nm=f.elements['Name'].value, sz=f.elements['Size'].value, q=f.elements['Quantity'].value;
       var t=document.getElementById('of-thanks');
       var msg=t.querySelector('.ot-msg');
-      if(msg){msg.textContent='Thanks '+nm+'\! Your order is in: '+q+' x '+MS_ITEM+' ('+sz+').';}
+      if(msg){msg.textContent='Thanks '+nm+'\! Your order is in: '+q+' x '+item.split(' - ')[0]+' ('+sz+').';}
       f.style.display='none';
       t.style.display='block';
       t.scrollIntoView({behavior:'smooth',block:'center'});
