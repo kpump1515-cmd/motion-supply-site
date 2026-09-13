@@ -184,6 +184,18 @@
 @media(max-width:720px){.ms-dd-menu{position:static;transform:none;opacity:1;visibility:visible;min-width:0;
   background:transparent;border:0;box-shadow:none;padding:0}.ms-dd-menu a{padding:6px 0}}
 </style>
+
+<style>
+.ms-tabs{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;z-index:9999;display:flex;gap:6px;
+  padding:6px;border-radius:999px;background:rgba(12,12,12,.92);border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 14px 38px rgba(0,0,0,.6);backdrop-filter:blur(8px)}
+.ms-tabs a{display:block;padding:10px 18px;border-radius:999px;color:#fff;text-decoration:none;
+  font-weight:800;font-size:13px;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap;transition:.15s ease}
+.ms-tabs a:hover{background:rgba(255,255,255,.12)}
+.ms-tabs a.on{background:var(--pink,#ff2e88);color:#fff}
+body{padding-bottom:78px}
+@media(max-width:480px){.ms-tabs a{padding:9px 13px;font-size:12px}}
+</style>
 </head>
 <body>
 
@@ -376,5 +388,6 @@ async function msOrder(e){
   return false;
 }
 </script>
+<div class="ms-tabs"><a href="shop.html">Shop</a><a href="#gallery">Gallery</a><a href="#preorder">Pre-Order</a></div>
 </body>
 </html>
