@@ -198,8 +198,8 @@ body{padding-bottom:78px}
 </style>
 <style>
 .card-img--wide{aspect-ratio:16/9;background:#000;display:flex;align-items:center;justify-content:center}
-.card-img--wide img{object-fit:contain;transform:none \!important;padding:6px}
-.card:hover .card-img--wide img{transform:none \!important}
+.card-img--wide img{object-fit:contain;transform:none !important;padding:6px}
+.card:hover .card-img--wide img{transform:none !important}
 </style>
 <style>
 #order{display:block}
@@ -323,8 +323,8 @@ function msOrder(e){
   e.preventDefault();
   var f=e.target;
   var item=f.elements['Item'].value;
-  if(\!item){alert('Please choose an item.');return false;}
-  if(\!f.elements['Size'].value){alert('Please pick a size.');return false;}
+  if(!item){alert('Please choose an item.');return false;}
+  if(!f.elements['Size'].value){alert('Please pick a size.');return false;}
   var nm=f.elements['Name'].value, sz=f.elements['Size'].value, q=f.elements['Quantity'].value;
   var total=msTotal(item,q);
   var payUrl='https://cash.app/$Tiathompson70/'+total;
@@ -337,7 +337,7 @@ function msOrder(e){
   var t=document.getElementById('of-thanks');
   if(t){
     var msg=t.querySelector('.ot-msg');
-    if(msg){msg.textContent='Thanks '+nm+'\! '+q+' x '+item.split(' - ')[0]+' ('+sz+'). Pay $'+total+' on Cash App to lock it in.';}
+    if(msg){msg.textContent='Thanks '+nm+'! '+q+' x '+item.split(' - ')[0]+' ('+sz+'). Pay $'+total+' on Cash App to lock it in.';}
     var pd=document.getElementById('of-paid'); if(pd){pd.textContent='$'+total;}
     var link=document.getElementById('of-cash');
     if(link){link.href=payUrl; link.textContent='Pay $'+total+' on Cash App';}
