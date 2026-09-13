@@ -300,6 +300,8 @@ body{padding-bottom:78px}
     </div>
   
   </section>
+  <script>(function(){var s=document.getElementById('order');if(s){s.style.display='none';}})();</script>
+
 
   <footer>
     <div class="logo">MOTION <span>SUPPLY</span></div>
@@ -334,10 +336,13 @@ function msSync(){
   var pd=document.getElementById('of-paid'); if(pd&&price){pd.textContent=price;}
 }
 function msPick(value){
+  var s=document.getElementById('order');
+  if(s){s.style.display='block';}
   var sel=document.getElementById('of-pick');
   if(sel){sel.value=value; msSync();}
-  var s=document.getElementById('order');
-  if(s){setTimeout(function(){s.scrollIntoView({behavior:'smooth',block:'start'});},60);}
+  var f=s?s.querySelector('.order-form'):null, t=document.getElementById('of-thanks');
+  if(f){f.style.display='';} if(t){t.style.display='none';}
+  if(s){setTimeout(function(){s.scrollIntoView({behavior:'smooth',block:'start'});},80);}
   return false;
 }
 async function msOrder(e){
