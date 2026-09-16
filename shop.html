@@ -195,6 +195,9 @@
 .ms-tabs a.on{background:var(--pink,#ff2e88);color:#fff}
 body{padding-bottom:78px}
 @media(max-width:480px){.ms-tabs a{padding:9px 13px;font-size:12px}}
+/* keep the floating tabs clear of the Netlify badge in the bottom-right */
+@media(max-width:1000px){.ms-tabs{bottom:78px}}
+@media(max-width:480px){.ms-tabs{bottom:72px}}
 </style>
 <style>
 .card-img--wide{aspect-ratio:16/9;background:#000;display:flex;align-items:center;justify-content:center}
