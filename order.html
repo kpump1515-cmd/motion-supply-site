@@ -222,7 +222,7 @@ body{padding-bottom:78px}
         <div class="ms-dd-menu">
           <a href="shop.html">All Items</a>
           <a href="shop.html#got-motion-tee">Got Motion? Jersey Tee <span>$25.00</span></a>
-          <a href="shop.html#skeleton-tee">Skeleton Tee <span>$45</span></a>
+          <a href="shop.html#skeleton-tee">Skeleton Tee <span>$28.99</span></a>
           <a href="shop.html#halftone-tee">Halftone Tee <span>$28.99</span></a>
         </div>
       </div>
@@ -248,7 +248,7 @@ body{padding-bottom:78px}
           <select class="field" id="of-pick" name="Item" required onchange="msSync()">
             <option value="">— Pick an item —</option>
             <option value="Got Motion? Jersey Tee (Black) - $25.00">Got Motion? Jersey Tee (Black) — $25.00</option>
-            <option value="Skeleton Tee (Black) - $45">Skeleton Tee (Black) — $45</option>
+            <option value="Skeleton Tee (Black) - $28.99">Skeleton Tee (Black) — $28.99</option>
             <option value="Halftone Tee (Black) - $28.99">Halftone Tee (Black) — $28.99</option>
           </select>
           <label class="field-label">Pick Your Size</label>
@@ -274,7 +274,7 @@ body{padding-bottom:78px}
         </form>
         <div class="order-note" id="of-thanks" >
           <p class="ot-msg" style="font-size:18px">Order received &mdash; we got your details.</p>
-          <p style="margin-top:10px">Now pay <b id="of-paid">$45</b> on <a href="https://cash.app/$Tiathompson70" target="_blank" rel="noopener" style="color:var(--pink)">Cash App</a> to lock it in.</p>
+          <p style="margin-top:10px">Now pay <b id="of-paid">$28.99</b> on <a href="https://cash.app/$Tiathompson70" target="_blank" rel="noopener" style="color:var(--pink)">Cash App</a> to lock it in.</p>
           <p style="margin-top:10px;font-size:14px;color:#e9c9dc">Questions? DM <a href="https://instagram.com/motionsupplyclothingco" target="_blank" rel="noopener" style="color:var(--pink)">@motionsupplyclothingco</a> on Instagram. A confirmation was sent to Motion Supply.</p>
         </div>
         <div style="text-align:center"><a id="of-cash" class="btn btn-primary" href="https://cash.app/$Tiathompson70" target="_blank" rel="noopener" style="margin-top:14px;display:inline-block">Pay on Cash App</a></div>
@@ -315,7 +315,7 @@ function msSync(){
 }
 (function(){
   var q=(location.search.match(/item=([a-z]+)/i)||[])[1]||'';
-  var map={gotmotion:'Got Motion? Jersey Tee (Black) - $25.00', skeleton:'Skeleton Tee (Black) - $45', halftone:'Halftone Tee (Black) - $28.99'};
+  var map={gotmotion:'Got Motion? Jersey Tee (Black) - $25.00', skeleton:'Skeleton Tee (Black) - $28.99', halftone:'Halftone Tee (Black) - $28.99'};
   var sel=document.getElementById('of-pick');
   if(sel&&map[q.toLowerCase()]){sel.value=map[q.toLowerCase()];}
   msSync();
