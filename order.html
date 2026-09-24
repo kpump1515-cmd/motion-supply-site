@@ -340,22 +340,35 @@ function msOrder(e){
   var total=msTotal(item,q);
   var payUrl='https://cash.app/$Tiathompson70/'+total;
   var btn=f.querySelector('button[type="submit"]');
-  btn.disabled=true; btn.textContent='Opening Cash App...';
-  var data=new FormData(f);
-  data.append('_subject','New Motion Supply Order - '+nm);
-  data.append('Total Due',total);
-  try{ fetch('https://formspree.io/f/mzebwedd',{method:'POST',body:data,headers:{'Accept':'application/json'},keepalive:true}); }catch(err){}
+  btn.disabled=true; btn.textContent='Opening your email...';
+  function fv(n){ var el=f.elements[n]; return el&&el.value?el.value:''; }
+  var body=[
+    'NEW MOTION SUPPLY ORDER',
+    '',
+    'Item: '+item,
+    'Size: '+sz,
+    'Quantity: '+q,
+    'Total Due: $'+total,
+    '',
+    'Name: '+nm,
+    'Email: '+fv('email'),
+    'Phone: '+fv('Phone'),
+    'Shipping Address: '+fv('Address'),
+    '',
+    'Paying $'+total+' on Cash App ($Tiathompson70).'
+  ].join('\n');
+  var mailUrl='mailto:kpump1515@gmail.com?subject='+encodeURIComponent('New Motion Supply Order - '+nm)+'&body='+encodeURIComponent(body);
   var t=document.getElementById('of-thanks');
   if(t){
     var msg=t.querySelector('.ot-msg');
-    if(msg){msg.textContent='Thanks '+nm+'! '+q+' x '+item.split(' - ')[0]+' ('+sz+'). Pay $'+total+' on Cash App to lock it in.';}
+    if(msg){msg.textContent='Thanks '+nm+'! '+q+' x '+item.split(' - ')[0]+' ('+sz+'). Send the order email that just opened, then pay $'+total+' on Cash App to lock it in.';}
     var pd=document.getElementById('of-paid'); if(pd){pd.textContent='$'+total;}
     var link=document.getElementById('of-cash');
     if(link){link.href=payUrl; link.textContent='Pay $'+total+' on Cash App';}
     f.style.display='none';
     t.style.display='block';
   }
-  window.location.href=payUrl;
+  window.location.href=mailUrl;
   return false;
 }
 </script>
