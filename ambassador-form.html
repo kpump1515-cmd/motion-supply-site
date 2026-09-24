@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ff2d95">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Brand Ambassador Application — Motion Supply Clothing Co</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{--pink:#ff2d95;--pink-hot:#ff1493;--pink-deep:#ff0080;--yellow:#ffd200}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:'Poppins',system-ui,sans-serif;color:#fff;
+    background:
+      radial-gradient(circle at 12% 12%,rgba(255,20,147,.35),transparent 38%),
+      radial-gradient(circle at 88% 18%,rgba(255,45,149,.28),transparent 40%),
+      radial-gradient(circle at 50% 100%,rgba(255,0,128,.30),transparent 45%),
+      #000;background-attachment:fixed;padding:0 0 60px}
+  h1,h2{font-family:'Anton',Impact,sans-serif;letter-spacing:.5px;text-transform:uppercase;line-height:.95}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+  .head{text-align:center;padding:40px 0 6px}
+  .head img{max-width:200px;width:55%;height:auto;margin-bottom:18px;filter:drop-shadow(0 0 18px rgba(255,45,149,.45))}
+  .badge{display:inline-flex;gap:8px;background:#000;border:2px solid var(--pink);color:var(--pink);
+    font-family:'Bebas Neue';letter-spacing:3px;font-size:15px;padding:5px 15px;border-radius:40px;margin-bottom:14px}
+  .badge b{color:#fff}
+  .head h1{font-size:clamp(34px,7vw,64px);text-shadow:0 0 18px rgba(255,45,149,.55),4px 4px 0 var(--pink-deep)}
+  .head p{margin:14px auto 0;max-width:560px;color:#d8d8e0;font-size:15px;line-height:1.6}
+  .panel{background:rgba(12,12,15,.88);border:2px solid rgba(255,45,149,.45);border-radius:22px;padding:26px;margin:26px 0;
+    box-shadow:0 0 30px rgba(255,45,149,.18)}
+  .panel h2{font-size:24px;color:var(--pink);margin-bottom:14px}
+  .rules{list-style:none;display:grid;gap:11px}
+  .rules li{position:relative;padding-left:28px;line-height:1.55;font-size:15px;color:#eaeaf0}
+  .rules li::before{content:"";position:absolute;left:0;top:7px;width:13px;height:13px;border-radius:50%;background:var(--pink);box-shadow:0 0 10px var(--pink)}
+  .rules b{color:var(--yellow)}
+  .field-label{display:block;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:1px;margin:18px 0 7px}
+  .field{width:100%;padding:13px 14px;border-radius:12px;border:2px solid rgba(255,255,255,.18);
+    background:#0b0b0e;color:#fff;font-family:'Poppins',sans-serif;font-size:15px}
+  .field:focus{outline:none;border-color:var(--pink);box-shadow:0 0 12px rgba(255,45,149,.45)}
+  textarea.field{min-height:96px;resize:vertical}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr}}
+  .agree{display:flex;gap:10px;align-items:flex-start;margin-top:20px;font-size:14px;color:#eaeaf0;line-height:1.5}
+  .agree input{margin-top:4px;width:18px;height:18px;accent-color:var(--pink)}
+  .btn{width:100%;margin-top:22px;background:var(--pink);color:#000;border:none;border-radius:40px;padding:16px 22px;
+    font-family:'Anton',sans-serif;font-size:20px;letter-spacing:1px;text-transform:uppercase;cursor:pointer;
+    box-shadow:0 0 20px rgba(255,45,149,.6)}
+  .btn:hover{background:var(--pink-hot)}
+  .thanks{display:none;text-align:center;padding:26px 8px}
+  .thanks h2{color:var(--yellow);font-size:28px;margin-bottom:10px}
+  footer{text-align:center;padding:26px 20px 0;color:#8b8b98;font-size:13px}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="head">
+      <img src="https://www.town.com/content/image/sd7baeyxbb1fn9zrfkfdsag0cx8dw40m?secret=a6bd5962-f92e-4283-a0de-fcc545ba678b" alt="Motion Supply Clothing Co">
+      <div class="badge">LESS EMOTION <b>MORE MOTION</b></div>
+      <h1>Brand Ambassador Application</h1>
+      <p>Fill this out and hit submit. Your application comes straight to Motion Supply.</p>
+    </div>
+
+    <div class="panel">
+      <h2>The Rules</h2>
+      <ul class="rules">
+        <li>You must be <b>willing to make content</b> — photos and videos wearing Motion Supply.</li>
+        <li>You must <b>tag us in every post</b> you make with the brand.</li>
+        <li>You must <b>post daily</b> with the latest drops.</li>
+        <li>There is a <b>one-time $10 shipping and handling fee</b> to get your welcome kit sent to you.</li>
+      </ul>
+      <h2 style="margin-top:22px">What You Earn</h2>
+      <ul class="rules">
+        <li><b>$50 commission</b> for every <b>10 shirts sold</b> through your code or link.</li>
+        <li><b>Free merchandise</b> from every new drop.</li>
+      </ul>
+    </div>
+
+    <div class="panel" id="apply">
+      <h2>Your Information</h2>
+      <form id="ambForm" action="https://formspree.io/f/mzebwedd" method="POST">
+        <input type="hidden" name="_subject" value="New Motion Supply Brand Ambassador Application">
+        <input type="hidden" name="Form" value="Brand Ambassador Application">
+
+        <label class="field-label" for="ab-name">Full Name</label>
+        <input class="field" type="text" id="ab-name" name="Name" placeholder="Your full name" required>
+
+        <label class="field-label" for="ab-addr">Street Address</label>
+        <input class="field" type="text" id="ab-addr" name="Address" placeholder="123 Main St, Apt 2" required>
+
+        <div class="grid2">
+          <div>
+            <label class="field-label" for="ab-city">City</label>
+            <input class="field" type="text" id="ab-city" name="City" required>
+          </div>
+          <div>
+            <label class="field-label" for="ab-state">State &amp; ZIP</label>
+            <input class="field" type="text" id="ab-state" name="State and ZIP" placeholder="NJ 08817" required>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div>
+            <label class="field-label" for="ab-phone">Phone Number</label>
+            <input class="field" type="tel" id="ab-phone" name="Phone" placeholder="(555) 555-5555" required>
+          </div>
+          <div>
+            <label class="field-label" for="ab-email">Email</label>
+            <input class="field" type="email" id="ab-email" name="email" placeholder="you@email.com" required>
+          </div>
+        </div>
+
+        <div class="grid2">
+          <div>
+            <label class="field-label" for="ab-shirt">Shirt Size</label>
+            <select class="field" id="ab-shirt" name="Shirt Size" required>
+              <option value="">Select size</option>
+              <option>Small</option><option>Medium</option><option>Large</option>
+              <option>Extra Large</option><option>2X</option><option>3X</option>
+            </select>
+          </div>
+          <div>
+            <label class="field-label" for="ab-pant">Pant Size</label>
+            <input class="field" type="text" id="ab-pant" name="Pant Size" placeholder="e.g. 32x32 or Medium" required>
+          </div>
+        </div>
+
+        <label class="field-label" for="ab-color">Favorite Color</label>
+        <input class="field" type="text" id="ab-color" name="Favorite Color" placeholder="e.g. Purple" required>
+
+        <div class="grid2">
+          <div>
+            <label class="field-label" for="ab-ig">Instagram Handle</label>
+            <input class="field" type="text" id="ab-ig" name="Instagram" placeholder="@yourhandle">
+          </div>
+          <div>
+            <label class="field-label" for="ab-tt">TikTok / Other Handle</label>
+            <input class="field" type="text" id="ab-tt" name="TikTok or Other" placeholder="@yourhandle">
+          </div>
+        </div>
+
+        <label class="field-label" for="ab-foll">Follower Count</label>
+        <input class="field" type="text" id="ab-foll" name="Follower Count" placeholder="Roughly how many followers">
+
+        <label class="field-label" for="ab-why">Why do you want to rep Motion Supply?</label>
+        <textarea class="field" id="ab-why" name="Why" placeholder="Tell us about your content and your audience"></textarea>
+
+        <label class="agree">
+          <input type="checkbox" name="Agrees to Rules" value="Yes" required>
+          <span>I agree to make content, tag Motion Supply in every post, post daily with the latest drops, and pay the one-time $10 shipping and handling fee for my welcome kit.</span>
+        </label>
+
+        <button class="btn" type="submit">Submit Application</button>
+      </form>
+
+      <div class="thanks" id="ambThanks">
+        <h2>Application Sent</h2>
+        <p>Thanks for applying to the Motion Supply ambassador team. We'll be in touch about your code and your welcome kit.</p>
+      </div>
+    </div>
+
+    <footer>MOTION SUPPLY CLOTHING CO — LESS EMOTION MORE MOTION</footer>
+  </div>
+
+<script>
+  var f = document.getElementById('ambForm');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var data = new FormData(f);
+    fetch('https://formspree.io/f/mzebwedd', {method:'POST', body:data, headers:{'Accept':'application/json'}})
+      .then(function(){ done(); }).catch(function(){ done(); });
+  });
+  function done(){
+    f.style.display='none';
+    document.getElementById('ambThanks').style.display='block';
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+</script>
+</body>
+</html>
