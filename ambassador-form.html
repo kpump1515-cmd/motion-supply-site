@@ -58,7 +58,7 @@
       <img src="https://www.town.com/content/image/sd7baeyxbb1fn9zrfkfdsag0cx8dw40m?secret=a6bd5962-f92e-4283-a0de-fcc545ba678b" alt="Motion Supply Clothing Co">
       <div class="badge">LESS EMOTION <b>MORE MOTION</b></div>
       <h1>Brand Ambassador Application</h1>
-      <p>Fill this out and hit submit. Your application comes straight to Motion Supply.</p>
+      <p>Fill this out and hit submit. Your application is sent straight to Motion Supply by text.</p>
     </div>
 
     <div class="panel">
@@ -78,9 +78,7 @@
 
     <div class="panel" id="apply">
       <h2>Your Information</h2>
-      <form id="ambForm" action="https://formspree.io/f/mzebwedd" method="POST">
-        <input type="hidden" name="_subject" value="New Motion Supply Brand Ambassador Application">
-        <input type="hidden" name="Form" value="Brand Ambassador Application">
+      <form id="ambForm">
 
         <label class="field-label" for="ab-name">Full Name</label>
         <input class="field" type="text" id="ab-name" name="Name" placeholder="Your full name" required>
@@ -163,7 +161,7 @@
   </div>
 
 <script>
-  var TO = 'kpump1515@gmail.com';
+  var TO = ['+1', '848', '280', '0039'].join('');
   var f = document.getElementById('ambForm');
   function val(id){ var el = document.getElementById(id); return el ? (el.value || '') : ''; }
   f.addEventListener('submit', function(e){
@@ -192,8 +190,7 @@
       'I agree to make content, tag Motion Supply in every post, post daily with the latest drops,',
       'and pay the one-time $10 shipping and handling fee for my welcome kit.'
     ];
-    var subject = 'Brand Ambassador Application - ' + (val('ab-name') || 'New Applicant');
-    var href = 'mailto:' + TO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+    var href = 'sms:' + TO + '?&body=' + encodeURIComponent(lines.join('\n'));
     window.location.href = href;
     setTimeout(done, 800);
   });
