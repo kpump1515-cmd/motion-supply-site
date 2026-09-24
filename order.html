@@ -224,6 +224,7 @@ body{padding-bottom:78px}
           <a href="shop.html#got-motion-tee">Got Motion? Jersey Tee <span>$25.00</span></a>
           <a href="shop.html#skeleton-tee">Skeleton Tee <span>$28.99</span></a>
           <a href="shop.html#halftone-tee">Halftone Tee <span>$28.99</span></a>
+          <a href="shop.html#airbrush-tee">Airbrush Tee <span>$25.00</span></a>
         </div>
       </div>
       <a href="index.html#gallery">Gallery</a>
@@ -250,6 +251,7 @@ body{padding-bottom:78px}
             <option value="Got Motion? Jersey Tee (Black) - $25.00">Got Motion? Jersey Tee (Black) — $25.00</option>
             <option value="Skeleton Tee (Black) - $28.99">Skeleton Tee (Black) — $28.99</option>
             <option value="Halftone Tee (Black) - $28.99">Halftone Tee (Black) — $28.99</option>
+            <option value="Airbrush Tee (Grey) - $25.00">Airbrush Tee (Grey) — $25.00</option>
           </select>
           <label class="field-label">Pick Your Size</label>
           <div class="size-row">
@@ -315,7 +317,7 @@ function msSync(){
 }
 (function(){
   var q=(location.search.match(/item=([a-z]+)/i)||[])[1]||'';
-  var map={gotmotion:'Got Motion? Jersey Tee (Black) - $25.00', skeleton:'Skeleton Tee (Black) - $28.99', halftone:'Halftone Tee (Black) - $28.99'};
+  var map={gotmotion:'Got Motion? Jersey Tee (Black) - $25.00', skeleton:'Skeleton Tee (Black) - $28.99', halftone:'Halftone Tee (Black) - $28.99', airbrush:'Airbrush Tee (Grey) - $25.00'};
   var sel=document.getElementById('of-pick');
   if(sel&&map[q.toLowerCase()]){sel.value=map[q.toLowerCase()];}
   msSync();
