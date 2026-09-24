@@ -163,12 +163,39 @@
   </div>
 
 <script>
+  var TO = 'kpump1515@gmail.com';
   var f = document.getElementById('ambForm');
+  function val(id){ var el = document.getElementById(id); return el ? (el.value || '') : ''; }
   f.addEventListener('submit', function(e){
     e.preventDefault();
-    var data = new FormData(f);
-    fetch('https://formspree.io/f/mzebwedd', {method:'POST', body:data, headers:{'Accept':'application/json'}})
-      .then(function(){ done(); }).catch(function(){ done(); });
+    var lines = [
+      'BRAND AMBASSADOR APPLICATION',
+      '',
+      'Full Name: ' + val('ab-name'),
+      'Street Address: ' + val('ab-addr'),
+      'City: ' + val('ab-city'),
+      'State & ZIP: ' + val('ab-state'),
+      'Phone: ' + val('ab-phone'),
+      'Email: ' + val('ab-email'),
+      '',
+      'Shirt Size: ' + val('ab-shirt'),
+      'Pant Size: ' + val('ab-pant'),
+      'Favorite Color: ' + val('ab-color'),
+      '',
+      'Instagram: ' + val('ab-ig'),
+      'TikTok / Other: ' + val('ab-tt'),
+      'Follower Count: ' + val('ab-foll'),
+      '',
+      'Why I want to rep Motion Supply:',
+      val('ab-why'),
+      '',
+      'I agree to make content, tag Motion Supply in every post, post daily with the latest drops,',
+      'and pay the one-time $10 shipping and handling fee for my welcome kit.'
+    ];
+    var subject = 'Brand Ambassador Application - ' + (val('ab-name') || 'New Applicant');
+    var href = 'mailto:' + TO + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+    window.location.href = href;
+    setTimeout(done, 800);
   });
   function done(){
     f.style.display='none';
